@@ -1,0 +1,276 @@
+/* -----------------------------
+   APPLE BUSINESS DESIGN – STYLE.CSS
+   Clean · Weiß · Minimalistisch · Smooth Shadows
+--------------------------------*/
+
+/* SYSTEM FONT */
+body, input, textarea, select, button {
+  font-family: -apple-system, BlinkMacSystemFont, "SF Pro Text",
+               "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+}
+
+/* PAGE BACKGROUND */
+body {
+  margin: 0;
+  padding: 0;
+  background: #f5f5f7; /* Apple Grey 1 */
+  color: #1c1c1e;       /* Apple Text */
+}
+
+/* WRAPPER */
+.wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 25px;
+}
+
+/* HEADER */
+.header-title {
+  text-align: center;
+  font-size: 2.2rem;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.header-sub {
+  text-align: center;
+  color: #6e6e73;
+  margin-bottom: 25px;
+  font-size: 0.95rem;
+}
+
+/* TAB BUTTONS */
+.tab-container {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.tab-btn {
+  padding: 10px 20px;
+  border-radius: 12px;
+  border: none;
+  background: #e9e9eb;
+  color: #1c1c1e;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: 0.25s;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.05);
+}
+
+.tab-btn.active {
+  background: #007aff; /* Apple Blue */
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(0,122,255,0.35);
+}
+
+.tab-btn:hover {
+  background: #d6d6d8;
+}
+
+/* DOCUMENT CARD */
+.card {
+  background: #fff;
+  border-radius: 18px;
+  padding: 25px;
+  box-shadow:
+    0 2px 4px rgba(0,0,0,0.05),
+    0 8px 20px rgba(0,0,0,0.06);
+  margin-bottom: 30px;
+}
+
+.section-title {
+  font-weight: 600;
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #1c1c1e;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 20px;
+}
+
+.field {
+  flex: 1;
+  min-width: 220px;
+}
+
+.field label {
+  display: block;
+  font-size: 0.8rem;
+  color: #6e6e73;
+  margin-bottom: 4px;
+}
+
+.field input,
+.field textarea {
+  width: 100%;
+  font-size: 0.9rem;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid #d2d2d7;
+  background: #fafafa;
+}
+
+.field input:focus,
+.field textarea:focus {
+  border-color: #007aff;
+  outline: none;
+  background: #fff;
+  box-shadow: 0 0 0 2px rgba(0,122,255,0.2);
+}
+
+/* TABLE */
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 18px;
+  font-size: 0.85rem;
+}
+
+.table th {
+  text-align: left;
+  padding: 10px;
+  background: #f2f2f7;
+  border-bottom: 1px solid #d1d1d6;
+  color: #1c1c1e;
+}
+
+.table td {
+  padding: 10px;
+  border-bottom: 1px solid #e5e5ea;
+}
+
+.table input {
+  width: 100%;
+  border: none;
+  padding: 6px;
+  background: transparent;
+  font-size: 0.85rem;
+}
+
+.table input:focus {
+  outline: none;
+  border-bottom: 1px solid #007aff;
+}
+
+/* BUTTONS */
+.btn {
+  border: none;
+  padding: 12px 22px;
+  border-radius: 14px;
+  cursor: pointer;
+  font-size: 0.95rem;
+  font-weight: 500;
+  transition: 0.25s;
+}
+
+.btn-blue {
+  background: #007aff;
+  color: white;
+  box-shadow: 0 4px 14px rgba(0,122,255,0.3);
+}
+
+.btn-blue:hover {
+  background: #006ae6;
+}
+
+.btn-grey {
+  background: #e5e5ea;
+  color: #1c1c1e;
+}
+
+.btn-grey:hover {
+  background: #d1d1d6;
+}
+
+/* FLEX BUTTON AREA */
+.button-row {
+  display: flex;
+  justify-content: flex-end;
+  gap: 12px;
+  margin-top: 25px;
+}
+
+/* ARCHIV SECTION */
+.archive-section {
+  margin-top: 40px;
+}
+
+.archive-title {
+  font-size: 1.4rem;
+  margin-bottom: 10px;
+}
+
+.accordion {
+  background: #fff;
+  padding: 18px;
+  border-radius: 16px;
+  margin-bottom: 15px;
+  box-shadow:
+    0 2px 4px rgba(0,0,0,0.05),
+    0 6px 18px rgba(0,0,0,0.06);
+}
+
+.accordion-header {
+  display: flex;
+  justify-content: space-between;
+  cursor: pointer;
+}
+
+.accordion-header span {
+  font-size: 1.1rem;
+  font-weight: 600;
+}
+
+.accordion-content {
+  margin-top: 15px;
+  display: none;
+}
+
+.accordion.open .accordion-content {
+  display: block;
+}
+
+/* ARCHIV TABLE */
+.archive-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 10px;
+}
+
+.archive-table th,
+.archive-table td {
+  padding: 10px;
+  border-bottom: 1px solid #e5e5ea;
+}
+
+.archive-table th {
+  background: #f2f2f7;
+  cursor: pointer;
+}
+
+/* SAVE NOTIFICATION */
+.save-toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #007aff;
+  color: #fff;
+  padding: 12px 20px;
+  border-radius: 14px;
+  font-size: 0.9rem;
+  box-shadow: 0 4px 14px rgba(0,122,255,0.3);
+  opacity: 0;
+  transform: translateY(-15px);
+  transition: 0.5s ease;
+  pointer-events: none;
+}
+
+.save-toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
