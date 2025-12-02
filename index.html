@@ -11,7 +11,7 @@
 
     body {
       font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
-      background: #f3f4f6;
+      background: #0f172a;
       margin: 0;
       padding: 20px;
       display: flex;
@@ -19,42 +19,62 @@
     }
 
     .wrapper {
-      max-width: 900px;
+      max-width: 980px;
       width: 100%;
-      background: #ffffff;
-      border-radius: 12px;
-      box-shadow: 0 4px 18px rgba(0,0,0,0.08);
-      padding: 20px 20px 30px;
+      background: linear-gradient(135deg, #111827 0%, #020617 40%, #0b1120 100%);
+      border-radius: 16px;
+      box-shadow: 0 20px 60px rgba(0,0,0,0.7);
+      padding: 18px 18px 26px;
+      color: #e5e7eb;
     }
 
     h1 {
       text-align: center;
-      margin: 0 0 15px;
-      font-size: 1.4rem;
+      margin: 0 0 16px;
+      font-size: 1.45rem;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      color: #e5e7eb;
+    }
+
+    .subtitle {
+      text-align: center;
+      font-size: 0.8rem;
+      color: #9ca3af;
+      margin-bottom: 14px;
     }
 
     .tabs {
       display: flex;
       gap: 8px;
-      margin-bottom: 15px;
+      margin-bottom: 12px;
       flex-wrap: wrap;
     }
 
     .tab-btn {
       flex: 1;
-      min-width: 80px;
+      min-width: 96px;
       padding: 8px 10px;
       border-radius: 999px;
-      border: 1px solid #d1d5db;
-      background: #f9fafb;
+      border: 1px solid rgba(148,163,184,0.6);
+      background: rgba(15,23,42,0.9);
       cursor: pointer;
       font-size: 0.9rem;
+      color: #e5e7eb;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 6px;
+    }
+
+    .tab-btn span.icon {
+      font-size: 1.1rem;
     }
 
     .tab-btn.active {
-      background: #2563eb;
-      color: #ffffff;
-      border-color: #2563eb;
+      background: linear-gradient(135deg, #2563eb, #4f46e5);
+      border-color: transparent;
+      box-shadow: 0 0 18px rgba(37,99,235,0.65);
     }
 
     .toolbar {
@@ -66,11 +86,15 @@
     }
 
     .btn {
-      padding: 8px 14px;
+      padding: 7px 14px;
       border-radius: 999px;
       border: none;
       cursor: pointer;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      white-space: nowrap;
     }
 
     .btn-print {
@@ -83,60 +107,131 @@
       color: #111827;
     }
 
-    .section-title {
-      font-weight: 600;
-      margin-top: 10px;
-      margin-bottom: 6px;
-      font-size: 0.95rem;
+    .btn span.icon {
+      font-size: 1.1rem;
+    }
+
+    .doc-shell {
+      background: #f9fafb;
+      border-radius: 12px;
+      padding: 18px 18px 22px;
+      color: #111827;
+      box-shadow: inset 0 0 0 1px #e5e7eb;
+    }
+
+    .doc-header {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      margin-bottom: 12px;
+      flex-wrap: wrap;
+    }
+
+    .company-block {
+      font-size: 0.86rem;
+      line-height: 1.35;
+    }
+
+    .company-name {
+      font-weight: 700;
+      font-size: 1rem;
+      margin-bottom: 4px;
+    }
+
+    .doc-meta {
+      font-size: 0.8rem;
+      min-width: 220px;
+    }
+
+    .doc-meta-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 6px;
+      margin-bottom: 4px;
+    }
+
+    .doc-meta-label {
+      color: #6b7280;
+      white-space: nowrap;
+    }
+
+    .doc-title {
+      text-align: center;
+      font-weight: 800;
+      font-size: 1.2rem;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      margin: 10px 0 12px;
     }
 
     .flex-row {
       display: flex;
-      gap: 12px;
+      gap: 16px;
       flex-wrap: wrap;
     }
 
     .field-group {
       flex: 1;
-      min-width: 180px;
+      min-width: 200px;
       margin-bottom: 8px;
     }
 
-    label {
-      display: block;
-      font-size: 0.8rem;
+    .field-label {
+      font-size: 0.78rem;
       color: #6b7280;
       margin-bottom: 2px;
     }
 
-    input, textarea, select {
+    .doc-input,
+    .doc-textarea {
       width: 100%;
       border-radius: 6px;
-      border: 1px solid #d1d5db;
-      padding: 6px 8px;
-      font-size: 0.9rem;
+      border: 1px solid #e5e7eb;
+      padding: 5px 8px;
+      font-size: 0.86rem;
+      background: #f9fafb;
     }
 
-    textarea {
+    .doc-input:focus,
+    .doc-textarea:focus {
+      outline: none;
+      border-color: #2563eb;
+      box-shadow: 0 0 0 1px rgba(37,99,235,0.35);
+      background: #ffffff;
+    }
+
+    .doc-textarea {
       min-height: 60px;
       resize: vertical;
+    }
+
+    .address-box {
+      border-radius: 8px;
+      border: 1px dashed #e5e7eb;
+      padding: 6px 8px;
+      background: #ffffff;
+      font-size: 0.86rem;
+    }
+
+    .address-box div {
+      min-height: 1.1em;
     }
 
     table {
       width: 100%;
       border-collapse: collapse;
       margin-top: 8px;
-      font-size: 0.88rem;
+      font-size: 0.82rem;
     }
 
     th, td {
       border: 1px solid #e5e7eb;
-      padding: 6px;
+      padding: 5px 6px;
       vertical-align: top;
     }
 
     th {
-      background: #f9fafb;
+      background: #f3f4f6;
       text-align: left;
     }
 
@@ -149,17 +244,43 @@
       text-align: right;
     }
 
+    .text-center {
+      text-align: center;
+    }
+
+    .pos-input {
+      width: 100%;
+      border: none;
+      background: transparent;
+      font-size: 0.82rem;
+    }
+
+    .pos-input:focus {
+      outline: none;
+      box-shadow: inset 0 -1px 0 #2563eb;
+    }
+
     .totals {
       margin-top: 10px;
       max-width: 280px;
       margin-left: auto;
-      font-size: 0.9rem;
+      font-size: 0.85rem;
     }
 
     .totals-row {
       display: flex;
       justify-content: space-between;
       margin-bottom: 4px;
+    }
+
+    .totals-row strong {
+      font-size: 0.9rem;
+    }
+
+    .footer-note {
+      margin-top: 12px;
+      font-size: 0.78rem;
+      color: #4b5563;
     }
 
     .hidden {
@@ -174,269 +295,339 @@
       .wrapper {
         box-shadow: none;
         border-radius: 0;
+        background: #ffffff;
+        padding: 0;
       }
-      .tabs, .toolbar {
+      .tabs, .toolbar, h1, .subtitle {
         display: none !important;
+      }
+      .doc-shell {
+        box-shadow: none;
+        border-radius: 0;
+        padding: 10mm 12mm;
       }
     }
   </style>
 </head>
 <body>
   <div class="wrapper">
-    <h1>Business Vorlagen – Rechnung / Angebot / Lieferschein</h1>
+    <h1>Business Vorlagen</h1>
+    <div class="subtitle">Professionelles Layout für Rechnung · Angebot · Lieferschein – direkt im Browser ausfüllbar & druckbar</div>
 
     <div class="tabs">
-      <button class="tab-btn active" data-target="rechnung">Rechnung</button>
-      <button class="tab-btn" data-target="angebot">Angebot</button>
-      <button class="tab-btn" data-target="lieferschein">Lieferschein</button>
+      <button class="tab-btn active" data-target="rechnung">
+        <span class="icon">📄</span><span>Rechnung</span>
+      </button>
+      <button class="tab-btn" data-target="angebot">
+        <span class="icon">📝</span><span>Angebot</span>
+      </button>
+      <button class="tab-btn" data-target="lieferschein">
+        <span class="icon">📦</span><span>Lieferschein</span>
+      </button>
     </div>
 
     <div class="toolbar">
-      <button class="btn btn-add-row" id="addRowBtn">+ Position</button>
-      <button class="btn btn-print" onclick="window.print()">🖨 Drucken</button>
+      <button class="btn btn-add-row" id="addRowBtn"><span class="icon">➕</span><span>Position hinzufügen</span></button>
+      <button class="btn btn-print" onclick="window.print()"><span class="icon">🖨</span><span>Drucken</span></button>
     </div>
 
-    <!-- RECHNUNG -->
-    <div id="rechnung" class="doc-section">
-      <div class="section-title">Firmendaten</div>
-      <div class="flex-row">
-        <div class="field-group">
-          <label>Firma</label>
-          <input id="r_firma" value="Musterfirma GmbH" />
+    <!-- DOKUMENTSCHALEN -->
+    <div class="doc-shell">
+
+      <!-- RECHNUNG -->
+      <div id="rechnung" class="doc-section">
+        <div class="doc-header">
+          <div class="company-block">
+            <div class="company-name"><input class="doc-input" value="Musterfirma GmbH" /></div>
+            <div><input class="doc-input" value="Musterstraße 1" /></div>
+            <div><input class="doc-input" value="12345 Musterstadt" /></div>
+            <div><input class="doc-input" value="Tel. 01234 56789 · info@musterfirma.de" /></div>
+          </div>
+          <div class="doc-meta">
+            <div class="doc-meta-row">
+              <span class="doc-meta-label">Rechnungsnummer</span>
+              <input class="doc-input" id="r_nr" value="2025-001" />
+            </div>
+            <div class="doc-meta-row">
+              <span class="doc-meta-label">Rechnungsdatum</span>
+              <input class="doc-input" id="r_datum" type="date" />
+            </div>
+            <div class="doc-meta-row">
+              <span class="doc-meta-label">Zahlungsziel</span>
+              <input class="doc-input" id="r_ziel" value="14 Tage netto" />
+            </div>
+          </div>
         </div>
-        <div class="field-group">
-          <label>Adresse</label>
-          <input id="r_adresse" value="Musterstraße 1, 12345 Musterstadt" />
+
+        <div class="doc-title">RECHNUNG</div>
+
+        <div class="flex-row" style="margin-bottom: 8px;">
+          <div class="field-group">
+            <div class="field-label">Rechnung an</div>
+            <div class="address-box">
+              <div contenteditable="true">Kunde GmbH</div>
+              <div contenteditable="true">Kundenweg 5</div>
+              <div contenteditable="true">54321 Kundenstadt</div>
+            </div>
+          </div>
+          <div class="field-group">
+            <div class="field-label">Kundennummer (optional)</div>
+            <input class="doc-input" id="r_kunden_nr" />
+            <div class="field-label" style="margin-top: 6px;">Betreff / Referenz</div>
+            <input class="doc-input" value="Rechnung für erbrachte Leistungen" />
+          </div>
         </div>
+
         <div class="field-group">
-          <label>Telefon / E-Mail</label>
-          <input id="r_kontakt" value="Tel. 01234 56789 · info@musterfirma.de" />
+          <div class="field-label">Einleitungstext</div>
+          <textarea class="doc-textarea" id="r_intro">
+Sehr geehrte Damen und Herren,
+
+für die von uns erbrachten Leistungen berechnen wir wie folgt:
+          </textarea>
+        </div>
+
+        <table id="positionTable">
+          <thead>
+            <tr>
+              <th style="width: 40px;" class="text-center">Pos.</th>
+              <th>Bezeichnung</th>
+              <th style="width: 60px;" class="text-center">Menge</th>
+              <th style="width: 70px;">Einheit</th>
+              <th style="width: 90px;" class="text-right">Einzelpreis €</th>
+              <th style="width: 90px;" class="text-right">Gesamt €</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center">1</td>
+              <td contenteditable="true">Dienstleistung laut Vereinbarung</td>
+              <td class="text-center"><input type="number" min="0" step="0.01" value="1" class="pos-input qty" /></td>
+              <td><input value="Stk." class="pos-input unit" /></td>
+              <td class="text-right"><input type="number" min="0" step="0.01" value="100" class="pos-input price" /></td>
+              <td class="text-right line-total">100,00</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="totals">
+          <div class="totals-row">
+            <span>Zwischensumme (netto)</span>
+            <span id="subtotal">100,00 €</span>
+          </div>
+          <div class="totals-row">
+            <span>USt. 19%</span>
+            <span id="vat">19,00 €</span>
+          </div>
+          <div class="totals-row">
+            <strong>Gesamtbetrag (brutto)</strong>
+            <strong id="total">119,00 €</strong>
+          </div>
+        </div>
+
+        <div class="field-group" style="margin-top: 10px;">
+          <div class="field-label">Fußtext / Zahlungshinweis</div>
+          <textarea class="doc-textarea" id="r_footer">
+Bitte überweisen Sie den Gesamtbetrag innerhalb der angegebenen Frist auf das bekannte Konto.
+Vielen Dank für Ihr Vertrauen!
+          </textarea>
+        </div>
+
+        <div class="footer-note">
+          Dieses Dokument wurde digital erstellt und ist auch ohne Unterschrift gültig.
         </div>
       </div>
 
-      <div class="flex-row">
-        <div class="field-group">
-          <label>Rechnungsnummer</label>
-          <input id="r_nr" value="2025-001" />
+      <!-- ANGEBOT -->
+      <div id="angebot" class="doc-section hidden">
+        <div class="doc-header">
+          <div class="company-block">
+            <div class="company-name"><input class="doc-input" value="Musterfirma GmbH" /></div>
+            <div><input class="doc-input" value="Musterstraße 1" /></div>
+            <div><input class="doc-input" value="12345 Musterstadt" /></div>
+            <div><input class="doc-input" value="Tel. 01234 56789 · info@musterfirma.de" /></div>
+          </div>
+          <div class="doc-meta">
+            <div class="doc-meta-row">
+              <span class="doc-meta-label">Angebotsnummer</span>
+              <input class="doc-input" id="a_nr" value="ANG-2025-001" />
+            </div>
+            <div class="doc-meta-row">
+              <span class="doc-meta-label">Angebotsdatum</span>
+              <input class="doc-input" id="a_datum" type="date" />
+            </div>
+            <div class="doc-meta-row">
+              <span class="doc-meta-label">Gültig bis</span>
+              <input class="doc-input" id="a_gueltig" type="date" />
+            </div>
+          </div>
         </div>
-        <div class="field-group">
-          <label>Rechnungsdatum</label>
-          <input id="r_datum" type="date" />
+
+        <div class="doc-title">ANGEBOT</div>
+
+        <div class="flex-row" style="margin-bottom: 8px;">
+          <div class="field-group">
+            <div class="field-label">Angebot für</div>
+            <div class="address-box">
+              <div contenteditable="true">Kunde GmbH</div>
+              <div contenteditable="true">Kundenweg 5</div>
+              <div contenteditable="true">54321 Kundenstadt</div>
+            </div>
+          </div>
+          <div class="field-group">
+            <div class="field-label">Ansprechpartner (optional)</div>
+            <input class="doc-input" id="a_ansprechpartner" />
+            <div class="field-label" style="margin-top: 6px;">Betreff</div>
+            <input class="doc-input" value="Angebot für Dienstleistungen / Lieferung" />
+          </div>
         </div>
+
         <div class="field-group">
-          <label>Zahlungsziel</label>
-          <input id="r_ziel" value="14 Tage netto" />
+          <div class="field-label">Einleitungstext</div>
+          <textarea class="doc-textarea" id="a_intro">
+Sehr geehrte Damen und Herren,
+
+gerne unterbreiten wir Ihnen folgendes Angebot:
+          </textarea>
+        </div>
+
+        <table id="offerTable">
+          <thead>
+            <tr>
+              <th style="width: 40px;" class="text-center">Pos.</th>
+              <th>Bezeichnung</th>
+              <th style="width: 60px;" class="text-center">Menge</th>
+              <th style="width: 70px;">Einheit</th>
+              <th style="width: 90px;" class="text-right">Einzelpreis €</th>
+              <th style="width: 90px;" class="text-right">Gesamt €</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center">1</td>
+              <td contenteditable="true">Beschreibung der angebotenen Leistung</td>
+              <td class="text-center"><input type="number" min="0" step="0.01" value="1" class="pos-input offer-qty" /></td>
+              <td><input value="Stk." class="pos-input" /></td>
+              <td class="text-right"><input type="number" min="0" step="0.01" value="100" class="pos-input offer-price" /></td>
+              <td class="text-right offer-line-total">100,00</td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="totals">
+          <div class="totals-row">
+            <span>Gesamtsumme (netto, unverbindlich)</span>
+            <span id="offer_total">100,00 €</span>
+          </div>
+        </div>
+
+        <div class="field-group" style="margin-top: 10px;">
+          <div class="field-label">Hinweise / Konditionen</div>
+          <textarea class="doc-textarea" id="a_footer">
+Alle Preise verstehen sich zzgl. der gesetzlichen Mehrwertsteuer, sofern nicht anders angegeben.
+Dieses Angebot ist bis zum oben genannten Datum gültig.
+          </textarea>
+        </div>
+
+        <div class="footer-note">
+          Mit Ihrer schriftlichen Bestätigung wird dieses Angebot zur verbindlichen Auftragsgrundlage.
         </div>
       </div>
 
-      <div class="section-title">Kundendaten</div>
-      <div class="flex-row">
-        <div class="field-group">
-          <label>Kunde / Firma</label>
-          <input id="r_kunde" value="Kunde GmbH" />
+      <!-- LIEFERSCHEIN -->
+      <div id="lieferschein" class="doc-section hidden">
+        <div class="doc-header">
+          <div class="company-block">
+            <div class="company-name"><input class="doc-input" value="Musterfirma GmbH" /></div>
+            <div><input class="doc-input" value="Musterstraße 1" /></div>
+            <div><input class="doc-input" value="12345 Musterstadt" /></div>
+            <div><input class="doc-input" value="Tel. 01234 56789 · info@musterfirma.de" /></div>
+          </div>
+          <div class="doc-meta">
+            <div class="doc-meta-row">
+              <span class="doc-meta-label">Lieferscheinnummer</span>
+              <input class="doc-input" id="l_nr" value="LS-2025-001" />
+            </div>
+            <div class="doc-meta-row">
+              <span class="doc-meta-label">Lieferdatum</span>
+              <input class="doc-input" id="l_datum" type="date" />
+            </div>
+            <div class="doc-meta-row">
+              <span class="doc-meta-label">Auftrags-/Bestellnr.</span>
+              <input class="doc-input" id="l_auftrag" />
+            </div>
+          </div>
         </div>
-        <div class="field-group">
-          <label>Adresse</label>
-          <input id="r_kunde_adresse" value="Kundenweg 5, 54321 Kundenstadt" />
+
+        <div class="doc-title">LIEFERSCHEIN</div>
+
+        <div class="flex-row" style="margin-bottom: 8px;">
+          <div class="field-group">
+            <div class="field-label">Lieferung an</div>
+            <div class="address-box">
+              <div contenteditable="true">Kunde GmbH</div>
+              <div contenteditable="true">Kundenweg 5</div>
+              <div contenteditable="true">54321 Kundenstadt</div>
+            </div>
+          </div>
+          <div class="field-group">
+            <div class="field-label">Kontaktperson (optional)</div>
+            <input class="doc-input" id="l_ansprechpartner" />
+            <div class="field-label" style="margin-top: 6px;">Lieferbedingungen</div>
+            <input class="doc-input" value="Lieferung frei Bordsteinkante, sofern nicht anders vereinbart." />
+          </div>
         </div>
-        <div class="field-group">
-          <label>Kundennummer (optional)</label>
-          <input id="r_kunden_nr" />
+
+        <table id="lieferTable">
+          <thead>
+            <tr>
+              <th style="width: 40px;" class="text-center">Pos.</th>
+              <th>Bezeichnung</th>
+              <th style="width: 80px;" class="text-center">Menge</th>
+              <th style="width: 80px;">Einheit</th>
+              <th>Bemerkung</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td class="text-center">1</td>
+              <td contenteditable="true">Artikel laut Bestellung</td>
+              <td class="text-center"><input type="number" min="0" step="0.01" value="1" class="pos-input" /></td>
+              <td><input value="Stk." class="pos-input" /></td>
+              <td contenteditable="true"></td>
+            </tr>
+          </tbody>
+        </table>
+
+        <div class="flex-row" style="margin-top: 16px;">
+          <div class="field-group">
+            <div class="field-label">Unterschrift Absender</div>
+            <div class="address-box" style="height: 60px;"></div>
+          </div>
+          <div class="field-group">
+            <div class="field-label">Unterschrift Empfänger</div>
+            <div class="address-box" style="height: 60px;"></div>
+          </div>
+        </div>
+
+        <div class="footer-note" style="margin-top: 12px;">
+          Bitte prüfen Sie die Ware umgehend auf Vollständigkeit und Beschädigungen und melden Sie Abweichungen sofort.
         </div>
       </div>
 
-      <div class="section-title">Positionen</div>
-      <table id="positionTable">
-        <thead>
-          <tr>
-            <th style="width: 40px;">Pos.</th>
-            <th>Bezeichnung</th>
-            <th style="width: 70px;">Menge</th>
-            <th style="width: 80px;">Einheit</th>
-            <th style="width: 90px;">Einzelpreis €</th>
-            <th style="width: 90px;">Gesamt €</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="text-right">1</td>
-            <td contenteditable="true">Dienstleistung laut Vereinbarung</td>
-            <td><input type="number" min="0" step="0.01" value="1" class="qty" /></td>
-            <td><input value="Stk." class="unit" /></td>
-            <td><input type="number" min="0" step="0.01" value="100" class="price" /></td>
-            <td class="text-right line-total">100,00</td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div class="totals">
-        <div class="totals-row">
-          <span>Zwischensumme (netto)</span>
-          <span id="subtotal">100,00 €</span>
-        </div>
-        <div class="totals-row">
-          <span>USt. 19%</span>
-          <span id="vat">19,00 €</span>
-        </div>
-        <div class="totals-row" style="font-weight: 700;">
-          <span>Gesamtbetrag (brutto)</span>
-          <span id="total">119,00 €</span>
-        </div>
-      </div>
-
-      <div class="section-title">Hinweis / Fußtext</div>
-      <textarea id="r_footer">Vielen Dank für Ihren Auftrag!</textarea>
-    </div>
-
-    <!-- ANGEBOT -->
-    <div id="angebot" class="doc-section hidden">
-      <div class="section-title">Firmendaten</div>
-      <div class="flex-row">
-        <div class="field-group">
-          <label>Firma</label>
-          <input id="a_firma" value="Musterfirma GmbH" />
-        </div>
-        <div class="field-group">
-          <label>Adresse</label>
-          <input id="a_adresse" value="Musterstraße 1, 12345 Musterstadt" />
-        </div>
-        <div class="field-group">
-          <label>Telefon / E-Mail</label>
-          <input id="a_kontakt" value="Tel. 01234 56789 · info@musterfirma.de" />
-        </div>
-      </div>
-
-      <div class="flex-row">
-        <div class="field-group">
-          <label>Angebotsnummer</label>
-          <input id="a_nr" value="ANG-2025-001" />
-        </div>
-        <div class="field-group">
-          <label>Angebotsdatum</label>
-          <input id="a_datum" type="date" />
-        </div>
-        <div class="field-group">
-          <label>Gültig bis</label>
-          <input id="a_gueltig" type="date" />
-        </div>
-      </div>
-
-      <div class="section-title">Kundendaten</div>
-      <div class="flex-row">
-        <div class="field-group">
-          <label>Kunde / Firma</label>
-          <input id="a_kunde" value="Kunde GmbH" />
-        </div>
-        <div class="field-group">
-          <label>Adresse</label>
-          <input id="a_kunde_adresse" value="Kundenweg 5, 54321 Kundenstadt" />
-        </div>
-        <div class="field-group">
-          <label>Ansprechpartner (optional)</label>
-          <input id="a_ansprechpartner" />
-        </div>
-      </div>
-
-      <div class="section-title">Leistungsbeschreibung</div>
-      <textarea id="a_text">Gerne unterbreiten wir Ihnen folgendes Angebot:</textarea>
-
-      <div class="section-title">Kurz-Zusammenfassung (optional)</div>
-      <textarea id="a_footer">Wir freuen uns auf Ihre Rückmeldung.</textarea>
-    </div>
-
-    <!-- LIEFERSCHEIN -->
-    <div id="lieferschein" class="doc-section hidden">
-      <div class="section-title">Firmendaten</div>
-      <div class="flex-row">
-        <div class="field-group">
-          <label>Firma</label>
-          <input id="l_firma" value="Musterfirma GmbH" />
-        </div>
-        <div class="field-group">
-          <label>Adresse</label>
-          <input id="l_adresse" value="Musterstraße 1, 12345 Musterstadt" />
-        </div>
-        <div class="field-group">
-          <label>Telefon / E-Mail</label>
-          <input id="l_kontakt" value="Tel. 01234 56789 · info@musterfirma.de" />
-        </div>
-      </div>
-
-      <div class="flex-row">
-        <div class="field-group">
-          <label>Lieferscheinnummer</label>
-          <input id="l_nr" value="LS-2025-001" />
-        </div>
-        <div class="field-group">
-          <label>Lieferdatum</label>
-          <input id="l_datum" type="date" />
-        </div>
-        <div class="field-group">
-          <label>Bestell-/Auftragsnummer</label>
-          <input id="l_auftrag" />
-        </div>
-      </div>
-
-      <div class="section-title">Empfänger</div>
-      <div class="flex-row">
-        <div class="field-group">
-          <label>Kunde / Firma</label>
-          <input id="l_kunde" value="Kunde GmbH" />
-        </div>
-        <div class="field-group">
-          <label>Adresse</label>
-          <input id="l_kunde_adresse" value="Kundenweg 5, 54321 Kundenstadt" />
-        </div>
-        <div class="field-group">
-          <label>Kontaktperson (optional)</label>
-          <input id="l_ansprechpartner" />
-        </div>
-      </div>
-
-      <div class="section-title">Gelieferte Waren / Positionen</div>
-      <table id="lieferTable">
-        <thead>
-          <tr>
-            <th style="width: 40px;">Pos.</th>
-            <th>Bezeichnung</th>
-            <th style="width: 80px;">Menge</th>
-            <th style="width: 80px;">Einheit</th>
-            <th>Bemerkung</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td class="text-right">1</td>
-            <td contenteditable="true">Artikel laut Bestellung</td>
-            <td><input type="number" min="0" step="0.01" value="1" /></td>
-            <td><input value="Stk." /></td>
-            <td contenteditable="true"></td>
-          </tr>
-        </tbody>
-      </table>
-
-      <div class="section-title">Unterschriften</div>
-      <div class="flex-row">
-        <div class="field-group">
-          <label>Unterschrift Absender</label>
-          <textarea></textarea>
-        </div>
-        <div class="field-group">
-          <label>Unterschrift Empfänger</label>
-          <textarea></textarea>
-        </div>
-      </div>
     </div>
   </div>
 
   <script>
-    // Tab-Umschaltung
+    // Tabs
     const tabButtons = document.querySelectorAll('.tab-btn');
     const sections = document.querySelectorAll('.doc-section');
+    let currentTab = 'rechnung';
 
     tabButtons.forEach(btn => {
       btn.addEventListener('click', () => {
         const target = btn.getAttribute('data-target');
+        currentTab = target;
         tabButtons.forEach(b => b.classList.remove('active'));
         btn.classList.add('active');
         sections.forEach(sec => {
@@ -445,9 +636,8 @@
       });
     });
 
-    // Positionen-Tabelle (Rechnung)
+    // RECHNUNG – Positionen & Summen
     const posTableBody = document.querySelector('#positionTable tbody');
-    const addRowBtn = document.getElementById('addRowBtn');
 
     function formatCurrency(value) {
       const num = isNaN(value) ? 0 : value;
@@ -495,25 +685,99 @@
       });
     }
 
-    addRowBtn.addEventListener('click', () => {
-      const newRow = document.createElement('tr');
-      const rowCount = posTableBody.querySelectorAll('tr').length + 1;
-      newRow.innerHTML = `
-        <td class="text-right">${rowCount}</td>
-        <td contenteditable="true">Neue Position</td>
-        <td><input type="number" min="0" step="0.01" value="1" class="qty" /></td>
-        <td><input value="Stk." class="unit" /></td>
-        <td><input type="number" min="0" step="0.01" value="0" class="price" /></td>
-        <td class="text-right line-total">0,00</td>
-      `;
-      posTableBody.appendChild(newRow);
-      attachRecalcEvents(newRow);
-      recalcTotals();
-    });
-
-    // Events an bestehende Zeile hängen
     posTableBody.querySelectorAll('tr').forEach(attachRecalcEvents);
     recalcTotals();
+
+    // ANGEBOT – einfache Summe
+    const offerTableBody = document.querySelector('#offerTable tbody');
+
+    function recalcOfferTotal() {
+      let total = 0;
+      const rows = offerTableBody.querySelectorAll('tr');
+      rows.forEach((row, index) => {
+        const qtyInput = row.querySelector('.offer-qty');
+        const priceInput = row.querySelector('.offer-price');
+        const lineTotalCell = row.querySelector('.offer-line-total');
+        const posCell = row.querySelector('td');
+
+        if (posCell) {
+          posCell.textContent = index + 1;
+        }
+
+        const qty = parseFloat(qtyInput?.value || '0');
+        const price = parseFloat(priceInput?.value || '0');
+        const lineTotal = qty * price;
+        total += lineTotal;
+
+        if (lineTotalCell) {
+          lineTotalCell.textContent = formatCurrency(lineTotal);
+        }
+      });
+
+      document.getElementById('offer_total').textContent = formatCurrency(total) + ' €';
+    }
+
+    function attachOfferEvents(row) {
+      const qtyInput = row.querySelector('.offer-qty');
+      const priceInput = row.querySelector('.offer-price');
+      [qtyInput, priceInput].forEach(input => {
+        if (input) {
+          input.addEventListener('input', recalcOfferTotal);
+        }
+      });
+    }
+
+    offerTableBody.querySelectorAll('tr').forEach(attachOfferEvents);
+    recalcOfferTotal();
+
+    // LIEFERSCHEIN – Tabellenkörper
+    const lieferTableBody = document.querySelector('#lieferTable tbody');
+
+    // + Position Button – abhängig vom aktuellen Tab
+    const addRowBtn = document.getElementById('addRowBtn');
+
+    addRowBtn.addEventListener('click', () => {
+      if (currentTab === 'rechnung') {
+        const rowCount = posTableBody.querySelectorAll('tr').length + 1;
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = `
+          <td class="text-center">${rowCount}</td>
+          <td contenteditable="true">Neue Position</td>
+          <td class="text-center"><input type="number" min="0" step="0.01" value="1" class="pos-input qty" /></td>
+          <td><input value="Stk." class="pos-input unit" /></td>
+          <td class="text-right"><input type="number" min="0" step="0.01" value="0" class="pos-input price" /></td>
+          <td class="text-right line-total">0,00</td>
+        `;
+        posTableBody.appendChild(newRow);
+        attachRecalcEvents(newRow);
+        recalcTotals();
+      } else if (currentTab === 'angebot') {
+        const rowCount = offerTableBody.querySelectorAll('tr').length + 1;
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = `
+          <td class="text-center">${rowCount}</td>
+          <td contenteditable="true">Neue angebotene Position</td>
+          <td class="text-center"><input type="number" min="0" step="0.01" value="1" class="pos-input offer-qty" /></td>
+          <td><input value="Stk." class="pos-input" /></td>
+          <td class="text-right"><input type="number" min="0" step="0.01" value="0" class="pos-input offer-price" /></td>
+          <td class="text-right offer-line-total">0,00</td>
+        `;
+        offerTableBody.appendChild(newRow);
+        attachOfferEvents(newRow);
+        recalcOfferTotal();
+      } else if (currentTab === 'lieferschein') {
+        const rowCount = lieferTableBody.querySelectorAll('tr').length + 1;
+        const newRow = document.createElement('tr');
+        newRow.innerHTML = `
+          <td class="text-center">${rowCount}</td>
+          <td contenteditable="true">Weitere gelieferte Position</td>
+          <td class="text-center"><input type="number" min="0" step="0.01" value="1" class="pos-input" /></td>
+          <td><input value="Stk." class="pos-input" /></td>
+          <td contenteditable="true"></td>
+        `;
+        lieferTableBody.appendChild(newRow);
+      }
+    });
   </script>
 </body>
 </html>
