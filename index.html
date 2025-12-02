@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8" />
+  <title>Business Vorlagen – Rechnung / Angebot / Lieferschein</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    * {
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Arial, sans-serif;
+      background: #f3f4f6;
+      margin: 0;
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .wrapper {
+      max-width: 900px;
+      width: 100%;
+      background: #ffffff;
+      border-radius: 12px;
+      box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+      padding: 20px 20px 30px;
+    }
+
+    h1 {
+      text-align: center;
+      margin: 0 0 15px;
+      font-size: 1.4rem;
+    }
+
+    .tabs {
+      display: flex;
+      gap: 8px;
+      margin-bottom: 15px;
+      flex-wrap: wrap;
+    }
+
+    .tab-btn {
+      flex: 1;
+      min-width: 80px;
+      padding: 8px 10px;
+      border-radius: 999px;
+      border: 1px solid #d1d5db;
+      background: #f9fafb;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .tab-btn.active {
+      background: #2563eb;
+      color: #ffffff;
+      border-color: #2563eb;
+    }
+
+    .toolbar {
+      display: flex;
+      justify-content: flex-end;
+      margin-bottom: 10px;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .btn {
+      padding: 8px 14px;
+      border-radius: 999px;
+      border: none;
+      cursor: pointer;
+      font-size: 0.9rem;
+    }
+
+    .btn-print {
+      background: #16a34a;
+      color: #ffffff;
+    }
+
+    .btn-add-row {
+      background: #e5e7eb;
+      color: #111827;
+    }
+
+    .section-title {
+      font-weight: 600;
+      margin-top: 10px;
+      margin-bottom: 6px;
+      font-size: 0.95rem;
+    }
+
+    .flex-row {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .field-group {
+      flex: 1;
+      min-width: 180px;
+      margin-bottom: 8px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.8rem;
+      color: #6b7280;
+      margin-bottom: 2px;
+    }
+
+    input, textarea, select {
+      width: 100%;
+      border-radius: 6px;
+      border: 1px solid #d1d5db;
+      padding: 6px 8px;
+      font-size: 0.9rem;
+    }
+
+    textarea {
+      min-height: 60px;
+      resize: vertical;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 8px;
+      font-size: 0.88rem;
+    }
+
+    th, td {
+      border: 1px solid #e5e7eb;
+      padding: 6px;
+      vertical-align: top;
+    }
+
+    th {
+      background: #f9fafb;
+      text-align: left;
+    }
+
+    tfoot td {
+      border: none;
+      padding: 4px 6px;
+    }
+
+    .text-right {
+      text-align: right;
+    }
+
+    .totals {
+      margin-top: 10px;
+      max-width: 280px;
+      margin-left: auto;
+      font-size: 0.9rem;
+    }
+
+    .totals-row {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 4px;
+    }
+
+    .hidden {
+      display: none;
+    }
+
+    @media print {
+      body {
+        background: #ffffff;
+        padding: 0;
+      }
+      .wrapper {
+        box-shadow: none;
+        border-radius: 0;
+      }
+      .tabs, .toolbar {
+        display: none !important;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="wrapper">
+    <h1>Business Vorlagen – Rechnung / Angebot / Lieferschein</h1>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-target="rechnung">Rechnung</button>
+      <button class="tab-btn" data-target="angebot">Angebot</button>
+      <button class="tab-btn" data-target="lieferschein">Lieferschein</button>
+    </div>
+
+    <div class="toolbar">
+      <button class="btn btn-add-row" id="addRowBtn">+ Position</button>
+      <button class="btn btn-print" onclick="window.print()">🖨 Drucken</button>
+    </div>
+
+    <!-- RECHNUNG -->
+    <div id="rechnung" class="doc-section">
+      <div class="section-title">Firmendaten</div>
+      <div class="flex-row">
+        <div class="field-group">
+          <label>Firma</label>
+          <input id="r_firma" value="Musterfirma GmbH" />
+        </div>
+        <div class="field-group">
+          <label>Adresse</label>
+          <input id="r_adresse" value="Musterstraße 1, 12345 Musterstadt" />
+        </div>
+        <div class="field-group">
+          <label>Telefon / E-Mail</label>
+          <input id="r_kontakt" value="Tel. 01234 56789 · info@musterfirma.de" />
+        </div>
+      </div>
+
+      <div class="flex-row">
+        <div class="field-group">
+          <label>Rechnungsnummer</label>
+          <input id="r_nr" value="2025-001" />
+        </div>
+        <div class="field-group">
+          <label>Rechnungsdatum</label>
+          <input id="r_datum" type="date" />
+        </div>
+        <div class="field-group">
+          <label>Zahlungsziel</label>
+          <input id="r_ziel" value="14 Tage netto" />
+        </div>
+      </div>
+
+      <div class="section-title">Kundendaten</div>
+      <div class="flex-row">
+        <div class="field-group">
+          <label>Kunde / Firma</label>
+          <input id="r_kunde" value="Kunde GmbH" />
+        </div>
+        <div class="field-group">
+          <label>Adresse</label>
+          <input id="r_kunde_adresse" value="Kundenweg 5, 54321 Kundenstadt" />
+        </div>
+        <div class="field-group">
+          <label>Kundennummer (optional)</label>
+          <input id="r_kunden_nr" />
+        </div>
+      </div>
+
+      <div class="section-title">Positionen</div>
+      <table id="positionTable">
+        <thead>
+          <tr>
+            <th style="width: 40px;">Pos.</th>
+            <th>Bezeichnung</th>
+            <th style="width: 70px;">Menge</th>
+            <th style="width: 80px;">Einheit</th>
+            <th style="width: 90px;">Einzelpreis €</th>
+            <th style="width: 90px;">Gesamt €</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-right">1</td>
+            <td contenteditable="true">Dienstleistung laut Vereinbarung</td>
+            <td><input type="number" min="0" step="0.01" value="1" class="qty" /></td>
+            <td><input value="Stk." class="unit" /></td>
+            <td><input type="number" min="0" step="0.01" value="100" class="price" /></td>
+            <td class="text-right line-total">100,00</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="totals">
+        <div class="totals-row">
+          <span>Zwischensumme (netto)</span>
+          <span id="subtotal">100,00 €</span>
+        </div>
+        <div class="totals-row">
+          <span>USt. 19%</span>
+          <span id="vat">19,00 €</span>
+        </div>
+        <div class="totals-row" style="font-weight: 700;">
+          <span>Gesamtbetrag (brutto)</span>
+          <span id="total">119,00 €</span>
+        </div>
+      </div>
+
+      <div class="section-title">Hinweis / Fußtext</div>
+      <textarea id="r_footer">Vielen Dank für Ihren Auftrag!</textarea>
+    </div>
+
+    <!-- ANGEBOT -->
+    <div id="angebot" class="doc-section hidden">
+      <div class="section-title">Firmendaten</div>
+      <div class="flex-row">
+        <div class="field-group">
+          <label>Firma</label>
+          <input id="a_firma" value="Musterfirma GmbH" />
+        </div>
+        <div class="field-group">
+          <label>Adresse</label>
+          <input id="a_adresse" value="Musterstraße 1, 12345 Musterstadt" />
+        </div>
+        <div class="field-group">
+          <label>Telefon / E-Mail</label>
+          <input id="a_kontakt" value="Tel. 01234 56789 · info@musterfirma.de" />
+        </div>
+      </div>
+
+      <div class="flex-row">
+        <div class="field-group">
+          <label>Angebotsnummer</label>
+          <input id="a_nr" value="ANG-2025-001" />
+        </div>
+        <div class="field-group">
+          <label>Angebotsdatum</label>
+          <input id="a_datum" type="date" />
+        </div>
+        <div class="field-group">
+          <label>Gültig bis</label>
+          <input id="a_gueltig" type="date" />
+        </div>
+      </div>
+
+      <div class="section-title">Kundendaten</div>
+      <div class="flex-row">
+        <div class="field-group">
+          <label>Kunde / Firma</label>
+          <input id="a_kunde" value="Kunde GmbH" />
+        </div>
+        <div class="field-group">
+          <label>Adresse</label>
+          <input id="a_kunde_adresse" value="Kundenweg 5, 54321 Kundenstadt" />
+        </div>
+        <div class="field-group">
+          <label>Ansprechpartner (optional)</label>
+          <input id="a_ansprechpartner" />
+        </div>
+      </div>
+
+      <div class="section-title">Leistungsbeschreibung</div>
+      <textarea id="a_text">Gerne unterbreiten wir Ihnen folgendes Angebot:</textarea>
+
+      <div class="section-title">Kurz-Zusammenfassung (optional)</div>
+      <textarea id="a_footer">Wir freuen uns auf Ihre Rückmeldung.</textarea>
+    </div>
+
+    <!-- LIEFERSCHEIN -->
+    <div id="lieferschein" class="doc-section hidden">
+      <div class="section-title">Firmendaten</div>
+      <div class="flex-row">
+        <div class="field-group">
+          <label>Firma</label>
+          <input id="l_firma" value="Musterfirma GmbH" />
+        </div>
+        <div class="field-group">
+          <label>Adresse</label>
+          <input id="l_adresse" value="Musterstraße 1, 12345 Musterstadt" />
+        </div>
+        <div class="field-group">
+          <label>Telefon / E-Mail</label>
+          <input id="l_kontakt" value="Tel. 01234 56789 · info@musterfirma.de" />
+        </div>
+      </div>
+
+      <div class="flex-row">
+        <div class="field-group">
+          <label>Lieferscheinnummer</label>
+          <input id="l_nr" value="LS-2025-001" />
+        </div>
+        <div class="field-group">
+          <label>Lieferdatum</label>
+          <input id="l_datum" type="date" />
+        </div>
+        <div class="field-group">
+          <label>Bestell-/Auftragsnummer</label>
+          <input id="l_auftrag" />
+        </div>
+      </div>
+
+      <div class="section-title">Empfänger</div>
+      <div class="flex-row">
+        <div class="field-group">
+          <label>Kunde / Firma</label>
+          <input id="l_kunde" value="Kunde GmbH" />
+        </div>
+        <div class="field-group">
+          <label>Adresse</label>
+          <input id="l_kunde_adresse" value="Kundenweg 5, 54321 Kundenstadt" />
+        </div>
+        <div class="field-group">
+          <label>Kontaktperson (optional)</label>
+          <input id="l_ansprechpartner" />
+        </div>
+      </div>
+
+      <div class="section-title">Gelieferte Waren / Positionen</div>
+      <table id="lieferTable">
+        <thead>
+          <tr>
+            <th style="width: 40px;">Pos.</th>
+            <th>Bezeichnung</th>
+            <th style="width: 80px;">Menge</th>
+            <th style="width: 80px;">Einheit</th>
+            <th>Bemerkung</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td class="text-right">1</td>
+            <td contenteditable="true">Artikel laut Bestellung</td>
+            <td><input type="number" min="0" step="0.01" value="1" /></td>
+            <td><input value="Stk." /></td>
+            <td contenteditable="true"></td>
+          </tr>
+        </tbody>
+      </table>
+
+      <div class="section-title">Unterschriften</div>
+      <div class="flex-row">
+        <div class="field-group">
+          <label>Unterschrift Absender</label>
+          <textarea></textarea>
+        </div>
+        <div class="field-group">
+          <label>Unterschrift Empfänger</label>
+          <textarea></textarea>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    // Tab-Umschaltung
+    const tabButtons = document.querySelectorAll('.tab-btn');
+    const sections = document.querySelectorAll('.doc-section');
+
+    tabButtons.forEach(btn => {
+      btn.addEventListener('click', () => {
+        const target = btn.getAttribute('data-target');
+        tabButtons.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+        sections.forEach(sec => {
+          sec.id === target ? sec.classList.remove('hidden') : sec.classList.add('hidden');
+        });
+      });
+    });
+
+    // Positionen-Tabelle (Rechnung)
+    const posTableBody = document.querySelector('#positionTable tbody');
+    const addRowBtn = document.getElementById('addRowBtn');
+
+    function formatCurrency(value) {
+      const num = isNaN(value) ? 0 : value;
+      return num.toFixed(2).replace('.', ',');
+    }
+
+    function recalcTotals() {
+      let subtotal = 0;
+      const rows = posTableBody.querySelectorAll('tr');
+      rows.forEach((row, index) => {
+        const qtyInput = row.querySelector('.qty');
+        const priceInput = row.querySelector('.price');
+        const lineTotalCell = row.querySelector('.line-total');
+        const posCell = row.querySelector('td');
+
+        if (posCell) {
+          posCell.textContent = index + 1;
+        }
+
+        const qty = parseFloat(qtyInput?.value || '0');
+        const price = parseFloat(priceInput?.value || '0');
+        const lineTotal = qty * price;
+        subtotal += lineTotal;
+
+        if (lineTotalCell) {
+          lineTotalCell.textContent = formatCurrency(lineTotal);
+        }
+      });
+
+      const vatAmount = subtotal * 0.19;
+      const total = subtotal + vatAmount;
+
+      document.getElementById('subtotal').textContent = formatCurrency(subtotal) + ' €';
+      document.getElementById('vat').textContent = formatCurrency(vatAmount) + ' €';
+      document.getElementById('total').textContent = formatCurrency(total) + ' €';
+    }
+
+    function attachRecalcEvents(row) {
+      const qtyInput = row.querySelector('.qty');
+      const priceInput = row.querySelector('.price');
+      [qtyInput, priceInput].forEach(input => {
+        if (input) {
+          input.addEventListener('input', recalcTotals);
+        }
+      });
+    }
+
+    addRowBtn.addEventListener('click', () => {
+      const newRow = document.createElement('tr');
+      const rowCount = posTableBody.querySelectorAll('tr').length + 1;
+      newRow.innerHTML = `
+        <td class="text-right">${rowCount}</td>
+        <td contenteditable="true">Neue Position</td>
+        <td><input type="number" min="0" step="0.01" value="1" class="qty" /></td>
+        <td><input value="Stk." class="unit" /></td>
+        <td><input type="number" min="0" step="0.01" value="0" class="price" /></td>
+        <td class="text-right line-total">0,00</td>
+      `;
+      posTableBody.appendChild(newRow);
+      attachRecalcEvents(newRow);
+      recalcTotals();
+    });
+
+    // Events an bestehende Zeile hängen
+    posTableBody.querySelectorAll('tr').forEach(attachRecalcEvents);
+    recalcTotals();
+  </script>
+</body>
+</html>
